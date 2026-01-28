@@ -1,0 +1,74 @@
+import java.util.Scanner;
+
+class Quiz {
+    private String[] questions = new String[10];
+    private String[] correctAnswers = new String[10];
+    int i = 0;
+    int j = 0;
+    int c = 0;
+    int score = 0;
+    public void setQuestions(String question){
+        questions[i] = question;
+        i++;
+    }
+    public void setCorrectAnswers(String answer){
+        correctAnswers[j] = answer;
+        j++;
+    }
+    public void checkAnswer(int qNo, String userAnswer){
+        if (userAnswer.equals(correctAnswers[qNo])){
+            System.out.println("The answer is correct!");
+            score();
+        }   else {
+            System.out.println("The answer is wrong.");
+        }
+    }
+    public void score(){
+        score++;
+    }
+    public void AskQuestion(){
+        System.out.println(questions[c]);
+        c++;
+    }
+    public int getScore(){
+        return score;
+    }
+}
+
+class Main{
+    public static void main(String[] args){
+
+        Scanner scanner = new Scanner(System.in);
+
+        Quiz q1 = new Quiz();
+
+        q1.setQuestions("What is the hardest natural substance on Earth?");
+        q1.setCorrectAnswers("Diamond");
+        q1.setQuestions("Which planet in our solar system rotates clockwise?");
+        q1.setCorrectAnswers("Venus");
+        q1.setQuestions("Who painted the Mona Lisa?");
+        q1.setCorrectAnswers("Leonardo da Vinci");
+        q1.setQuestions("What is the only food that can never go bad?");
+        q1.setCorrectAnswers("Honey");
+        q1.setQuestions("What is the capital city of Australia?");
+        q1.setCorrectAnswers("Canberra");
+        q1.setQuestions("How many bones are in the adult human body?");
+        q1.setCorrectAnswers("206");
+        q1.setQuestions("What is the largest ocean in the world?");
+        q1.setCorrectAnswers("Pacific Ocean");
+        q1.setQuestions("Which country gifted the Statue of Liberty to the USA?");
+        q1.setCorrectAnswers("France");
+        q1.setQuestions("What is the fastest land animal?");
+        q1.setCorrectAnswers("Cheetah");
+        q1.setQuestions("What does http stand for?");
+        q1.setCorrectAnswers("HyperText Transfer Protocol");
+
+        for (int k = 0; k < 10; k++){
+            q1.AskQuestion();
+            String answer = scanner.nextLine();
+            q1.checkAnswer(k, answer);
+        }
+
+        System.out.println("Your score is " + q1.getScore());
+    }
+}
