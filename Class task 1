@@ -1,0 +1,49 @@
+class Elevator {
+    private int currentFloor;
+    private int minFloor;
+    private int maxFloor;
+    public void setMinFloor(int min){
+        minFloor = min;
+    }
+    public void setMaxFloor(int max){
+        maxFloor = max;
+    }
+    public void setCurrentFloor(int floor){
+        if (floor >= minFloor && floor <= maxFloor){
+            currentFloor = floor;
+        }   else {
+            System.out.println("current floor must be higher than " + minFloor + " and lower than " + maxFloor);
+        }
+    }
+    public int getCurrentFloor() {
+        return currentFloor;
+    }
+    public void moveUp() {
+        if (currentFloor < maxFloor) {
+            currentFloor++;
+        } else {
+            System.out.println("Already at top floor");
+        }
+    }
+    public void moveDown() {
+        if (currentFloor > minFloor) {
+            currentFloor--;
+        } else {
+            System.out.println("Already at bottom floor");
+        }
+    }
+
+}
+public class Main {
+    public static void main(String[] args){
+        Elevator e1 = new Elevator();
+        e1.setMinFloor(0);
+        e1.setMaxFloor(10);
+        e1.setCurrentFloor(5);
+        e1.moveUp();
+        e1.moveUp();
+        e1.moveDown();
+        int floor = e1.getCurrentFloor();
+        System.out.println("The current floor is " + floor);
+    }
+}
