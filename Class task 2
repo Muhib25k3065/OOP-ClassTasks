@@ -1,0 +1,51 @@
+class User {
+    private String username;
+    private String password;
+    public void setUsername(String user){
+        username = user;
+    }
+    public void setPassword(String pass){
+        int length = pass.length();
+        boolean found = false;
+        if (length >= 8){
+            for(int i = 0; i < length; i++){
+                if (pass.charAt(i) >= '0' && pass.charAt(i) <= '9'){
+                    found = true;
+                    break;
+                }
+            }
+        }   else {
+            System.out.println("Password must be longer than 8 characters.");
+            return;
+        }
+        if (found){
+            password = pass;
+        }   else {
+            System.out.println("Password must contain at least 1 digit.");
+            return;
+        }
+    }
+    public String getUsername(){
+        return username;
+    }
+    public String getPassword(){
+        String secret = "";
+        int length2 = password.length();
+        for(int j = 0; j < length2; j++){
+            secret = secret + '*';
+        }
+        return secret;
+    }
+}
+
+public class Main{
+    public static void main(String[] args) {
+        User u1 = new User();
+        u1.setUsername("Stella");
+        u1.setPassword("stella123");
+        String user = u1.getUsername();
+        String pass = u1.getPassword();
+        System.out.println("Your username is " + user);
+        System.out.println("Your password is " + pass);
+    }
+}
